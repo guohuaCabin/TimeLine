@@ -25,7 +25,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [super viewDidLoad];
     [self addTableView];
-   // [self addData];
 }
 
 - (void)addTableView
@@ -52,10 +51,6 @@
     }
     return _dataArray;
 }
-- (void)addData
-{
-    
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -73,11 +68,19 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor clearColor];
+    //根据cell判断cell中bottomLine的颜色，如果不是最后一个，则颜色和topLine颜色一样。
     cell.buttomLine.backgroundColor = indexPath.row == (_dataArray.count-1) ? [UIColor grayColor] : cell.topLine.backgroundColor;
      self.topLine.backgroundColor = cell.topLine.backgroundColor;
    // cell.topLine.backgroundColor = indexPath.row == 0 ? [UIColor clearColor] : self.topLine.backgroundColor;
     
+    //使创建的 topLine 视图背景颜色 等于 cell中 topLine 的背景颜色
     self.topLine.backgroundColor = cell.topLine.backgroundColor;
+    
+    //获取cell中topLine 或者bottomLine 的 x 位置。
+    /**
+     *   将像素point由point所在视图转换到目标视图view中，返回在目标视图view中的像素值
+     *   (CGPoint)convertPoint:(CGPoint)point toView:(UIView *)view
+     */
      self.leadingSpaceOfLines =  [cell convertPoint:cell.topLine.frame.origin toView:self.view].x;
     
     [self scrollViewDidScroll:tableView];
@@ -87,8 +90,10 @@
 #pragma mark --tableViewDelegate--
 //要展开cell视图回调; 行将显示的时候调用，预加载行
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(nonnull UITableViewCell *)cell forRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-//  /**未实现，出现未知问题，如果你能找到解决方法，记得留言告诉我。或者邮件：name_guohua@163.com */
+
+//  /**未实现，出现问题为：无法获取cell中topLine 或者bottomLine 的 x 位置。，如果你能找到解决方法，记得留言告诉我。或者邮件：name_guohua@163.com，将会非常感谢 */
 //   /**以下方法已移至 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 方法中实现。*/
+
 //    if (cell) {
 //        self.topLine.backgroundColor = _cell.topLine.backgroundColor;
 //        NSLog(@"color == %@",self.topLine.backgroundColor);
@@ -99,6 +104,8 @@
 //    [self scrollViewDidScroll:tableView];
 //    
 //}
+#pragma mark --important code--
+//根据上下拉动，动态改变 topLine 和 bottomLine 的 y 轴坐标。
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     _topLine.frame = CGRectMake(_leadingSpaceOfLines, 0, 3, -scrollView.contentOffset.y);

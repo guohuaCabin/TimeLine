@@ -75,7 +75,6 @@
     
     //使创建的 topLine 视图背景颜色 等于 cell中 topLine 的背景颜色
     self.topLine.backgroundColor = cell.topLine.backgroundColor;
-    
     //获取cell中topLine 或者bottomLine 的 x 位置。
     /**
      *   将像素point由point所在视图转换到目标视图view中，返回在目标视图view中的像素值

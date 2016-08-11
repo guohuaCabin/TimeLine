@@ -47,7 +47,7 @@
 - (NSArray *)dataArray
 {
     if (!_dataArray) {
-        _dataArray = @[@"you know ,this is timeline(时间轴)!",@"灵感来源于：美团的订单详情页面 和 path软件",@"这只是个简单的实现，当然，你可以做的更丰富，左侧加头像或者其他...",@"初衷：工作项目需要，该死的老板一次次的改想法,当然，也要感谢他逼着成长",@"实现：感谢一个叫：Cyandev的作者，他的文章是我实现的源泉",@"我喜欢开源，对于一个正在成长的编程者，它帮助我太多了",@"这个时间轴分享给大家，贡献不论大小，也是一种贡献吧"];
+        _dataArray = @[@"you know ,this is timeline(时间轴)!",@"灵感来源于：美团的订单详情页面 和 path软件",@"这只是个简单的实现，当然，你可以做的更丰富，左侧加头像或者其他...",@"初衷：工作项目需要，该死的老板一次次的改想法,当然，也要感谢他逼着成长",@"实现：感谢一个叫：Cyandev的作者，他的文章是我实现的源泉",@"我喜欢开源，对于一个正在成长的编程者，它帮助我太多了",@"这个时间轴分享给大家，贡献不论大小，也是一种贡献吧",@"",@""];
     }
     return _dataArray;
 }
@@ -70,7 +70,6 @@
     cell.backgroundColor = [UIColor clearColor];
     //根据cell判断cell中bottomLine的颜色，如果不是最后一个，则颜色和topLine颜色一样。
     cell.buttomLine.backgroundColor = indexPath.row == (_dataArray.count-1) ? [UIColor grayColor] : cell.topLine.backgroundColor;
-     self.topLine.backgroundColor = cell.topLine.backgroundColor;
    // cell.topLine.backgroundColor = indexPath.row == 0 ? [UIColor clearColor] : self.topLine.backgroundColor;
     
     //使创建的 topLine 视图背景颜色 等于 cell中 topLine 的背景颜色
@@ -110,6 +109,7 @@
     _topLine.frame = CGRectMake(_leadingSpaceOfLines, 0, 3, -scrollView.contentOffset.y);
 
     CGFloat yOffSet = scrollView.frame.size.height - scrollView.contentSize.height + scrollView.contentOffset.y ;
+     NSLog(@"%f,%f,%f,%f,%f",scrollView.frame.size.height,scrollView.contentSize.height,scrollView.contentOffset.y,yOffSet,self.view.frame.size.height);
     _bottomLine.frame = CGRectMake(_leadingSpaceOfLines, self.view.frame.size.height - yOffSet, 3, self.view.frame.size.height);
 
 }

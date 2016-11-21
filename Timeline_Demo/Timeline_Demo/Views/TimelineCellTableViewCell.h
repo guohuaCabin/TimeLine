@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TimelineCellTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *bubbleImageView;
+
 @property (strong, nonatomic) IBOutlet UIView *topLine;
 @property (strong, nonatomic) IBOutlet UIView *buttomLine;
 @property (strong, nonatomic) IBOutlet UILabel *lineLabel;

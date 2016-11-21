@@ -5,3 +5,5 @@
 - At the same time, demo also implement the use hexadecimal color approach.
 > 代码中也实现了使用十六进制颜色的方法。
 
+- Change the air bubble image, image stretching method is used to load the image
+> 更改气泡图片，使用图片拉伸方法加载小图片

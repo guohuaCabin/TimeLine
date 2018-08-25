@@ -1,5 +1,6 @@
 **<p align="center">TimeLine(时间轴)</p>**
-<p align="center">![iOS](https://img.shields.io/badge/iOS-Objective--C-green.svg)</p>
+<p align="center">![iOS](https://img.shields.io/badge/iOS-Objective--C-green.svg)
+</p>
 
 - this is demo about timeline ,it`s just a simple codes implement.But,I think it is important to achieve functional ideas.
 > 这是一个关于iOS时间轴的简单实现，我认为重要的是思路。 
